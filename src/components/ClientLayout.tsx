@@ -11,10 +11,11 @@ import { usePathname } from 'next/navigation';
 import { colors } from '@/lib/constants';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { useLayoutEffect } from 'react';
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
 
 interface ClientLayoutProps {
   children: React.ReactNode;

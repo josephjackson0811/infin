@@ -6,10 +6,11 @@ import styles from '../../../styles/components/organisms/Marketing/Expected.modu
 import { Section } from '@/components/atoms/Section';
 import Cursor from '@/components/atoms/Cursor';
 import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 interface IMarketing {
   attributes?: {
     blocks: {
