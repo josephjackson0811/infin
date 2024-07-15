@@ -2,10 +2,11 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from '../../../styles/components/organisms/Individuals/HowWorks.module.scss';
 
 import { Section } from '@/components/atoms/Section';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import CSSPlugin from 'gsap/CSSPlugin';
+// import gsap from 'gsap';
+// import ScrollTrigger from 'gsap/ScrollTrigger';
+import { gsap, ScrollTrigger } from '@/components/GsapLib';
 import Image from 'next/image';
+gsap.registerPlugin(ScrollTrigger);
 
 interface IDividualData {
   attributes?: {
@@ -38,7 +39,6 @@ export default function HowWorks({ data }: HowWorksProps) {
   }, []);
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, CSSPlugin);
     let ctx = gsap.context(() => {
       let panels = gsap.utils.toArray('.panel');
       let underlines = gsap.utils.toArray('.underline');

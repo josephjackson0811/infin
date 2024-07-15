@@ -16,11 +16,11 @@ import Reviews from '@/components/organisms/HomeComponents/Reviews';
 import BottomComponent from '@/components/BottomComponent';
 import LargeImage from '@/components/organisms/LargeImage';
 import { getHome } from '@/lib/strapi/strapi-fetch';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+// import { gsap } from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap, ScrollTrigger } from '@/components/GsapLib';
 import useCheckIsMobile from '@/hooks/useCheckIsMobile';
-
+gsap.registerPlugin(ScrollTrigger);
 interface HomePageProps {}
 
 interface IHomeData {
@@ -72,7 +72,6 @@ export default function HomePage({}: HomePageProps) {
   };
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     setElementHeight(
       document.getElementById('business')?.parentElement
         ?.offsetHeight as number,

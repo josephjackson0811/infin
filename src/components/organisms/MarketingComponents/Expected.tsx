@@ -5,10 +5,11 @@ import styles from '../../../styles/components/organisms/Marketing/Expected.modu
 
 import { Section } from '@/components/atoms/Section';
 import Cursor from '@/components/atoms/Cursor';
-import gsap from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap, ScrollTrigger } from '@/components/GsapLib';
 import Image from 'next/image';
+gsap.registerPlugin(ScrollTrigger);
 
 interface IMarketing {
   attributes?: {
@@ -44,7 +45,6 @@ export default function Expected({ data }: ExpectedProps) {
   };
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     let ctx = gsap.context(() => {
       let panels = gsap.utils.toArray('.panel');
       let underlines = gsap.utils.toArray('.underline');
