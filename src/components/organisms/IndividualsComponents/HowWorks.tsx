@@ -6,7 +6,6 @@ import { Section } from '@/components/atoms/Section';
 // import ScrollTrigger from 'gsap/ScrollTrigger';
 import { gsap, ScrollTrigger } from '@/components/GsapLib';
 import Image from 'next/image';
-gsap.registerPlugin(ScrollTrigger);
 
 interface IDividualData {
   attributes?: {

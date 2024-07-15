@@ -15,8 +15,6 @@ import { colors } from '@/lib/constants';
 import { gsap, ScrollTrigger, ScrollSmoother } from '@/components/GsapLib';
 import { useLayoutEffect } from 'react';
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
 interface ClientLayoutProps {
   children: React.ReactNode;
 }

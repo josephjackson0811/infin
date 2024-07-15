@@ -9,7 +9,6 @@ import Cursor from '@/components/atoms/Cursor';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { gsap, ScrollTrigger } from '@/components/GsapLib';
 import Image from 'next/image';
-gsap.registerPlugin(ScrollTrigger);
 
 interface IMarketing {
   attributes?: {
