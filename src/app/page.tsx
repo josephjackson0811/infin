@@ -76,6 +76,8 @@ export default function HomePage({}: HomePageProps) {
     }
   };
 
+  console.log('scrollTrigger', ScrollTrigger);
+
   useLayoutEffect(() => {
     setElementHeight(
       document.getElementById('business')?.parentElement
