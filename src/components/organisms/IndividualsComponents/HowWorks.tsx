@@ -6,7 +6,6 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import CSSPlugin from 'gsap/CSSPlugin';
 import Image from 'next/image';
-gsap.registerPlugin(ScrollTrigger, CSSPlugin);
 
 interface IDividualData {
   attributes?: {
@@ -39,6 +38,7 @@ export default function HowWorks({ data }: HowWorksProps) {
   }, []);
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, CSSPlugin);
     let ctx = gsap.context(() => {
       let panels = gsap.utils.toArray('.panel');
       let underlines = gsap.utils.toArray('.underline');

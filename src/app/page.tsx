@@ -20,7 +20,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import useCheckIsMobile from '@/hooks/useCheckIsMobile';
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 interface HomePageProps {}
 
@@ -73,6 +72,7 @@ export default function HomePage({}: HomePageProps) {
   };
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     setElementHeight(
       document.getElementById('business')?.parentElement
         ?.offsetHeight as number,

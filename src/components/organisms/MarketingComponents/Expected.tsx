@@ -10,7 +10,6 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 interface IMarketing {
   attributes?: {
     blocks: {
@@ -45,6 +44,7 @@ export default function Expected({ data }: ExpectedProps) {
   };
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     let ctx = gsap.context(() => {
       let panels = gsap.utils.toArray('.panel');
       let underlines = gsap.utils.toArray('.underline');
