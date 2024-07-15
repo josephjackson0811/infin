@@ -20,7 +20,12 @@ import { getHome } from '@/lib/strapi/strapi-fetch';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { gsap, ScrollTrigger } from '@/components/GsapLib';
 import useCheckIsMobile from '@/hooks/useCheckIsMobile';
-gsap.registerPlugin(ScrollTrigger);
+import { useGSAP } from '@gsap/react';
+// gsap.registerPlugin(ScrollTrigger);
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 interface HomePageProps {}
 
 interface IHomeData {
