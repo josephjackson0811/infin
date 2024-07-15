@@ -17,7 +17,7 @@ import BottomComponent from '@/components/BottomComponent';
 import LargeImage from '@/components/organisms/LargeImage';
 import { getHome } from '@/lib/strapi/strapi-fetch';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useCheckIsMobile from '@/hooks/useCheckIsMobile';
 gsap.registerPlugin(ScrollTrigger);
 
