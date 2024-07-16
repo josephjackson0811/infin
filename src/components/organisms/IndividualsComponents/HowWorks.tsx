@@ -99,7 +99,11 @@ export default function HowWorks({ data }: HowWorksProps) {
 
   const { blocks = [] } = attributes;
   return (
-    <Section type="filled" className={styles.section + ' container'}>
+    <Section
+      type="filled"
+      className={styles.section + ' container'}
+      id="howItWorks"
+    >
       <div className={styles.topBlock}>
         <p className={styles.smallText}>{blocks[0].title || ''}</p>
 

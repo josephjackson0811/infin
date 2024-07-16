@@ -20,7 +20,7 @@ import { getHome } from '@/lib/strapi/strapi-fetch';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { gsap, ScrollTrigger } from '@/components/GsapLib';
 import useCheckIsMobile from '@/hooks/useCheckIsMobile';
-
+gsap.registerPlugin(ScrollTrigger);
 interface HomePageProps {}
 
 interface IHomeData {
@@ -89,7 +89,7 @@ export default function HomePage({}: HomePageProps) {
   }, [elementHeight]);
 
   useEffect(() => {
-    ScrollTrigger && gsap.registerPlugin(ScrollTrigger);
+    // ScrollTrigger && gsap.registerPlugin(ScrollTrigger);
     const height =
       (document.getElementById('business')?.clientHeight as number) - 30 || 900;
     const cards = gsap.utils.toArray('.homeCard');
