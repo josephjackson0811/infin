@@ -21,7 +21,6 @@ import { getHome } from '@/lib/strapi/strapi-fetch';
 import { gsap, ScrollTrigger } from '@/components/GsapLib';
 import useCheckIsMobile from '@/hooks/useCheckIsMobile';
 gsap.registerPlugin(ScrollTrigger);
-console.log(typeof window);
 
 interface HomePageProps {}
 
@@ -57,6 +56,7 @@ interface IHomeData {
 export default function HomePage({}: HomePageProps) {
   const [data, setData] = useState<IHomeData[]>();
   const [elementHeight, setElementHeight] = useState<number>(0);
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   const cardContainer = useRef<HTMLDivElement>(null);
 
@@ -73,7 +73,7 @@ export default function HomePage({}: HomePageProps) {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setElementHeight(
       document.getElementById('business')?.parentElement
         ?.offsetHeight as number,
@@ -95,21 +95,22 @@ export default function HomePage({}: HomePageProps) {
     const cards = gsap.utils.toArray('.homeCard');
 
     let ctx = gsap.context(() => {
-      gsap.from('.homeCard', {
-        y: (index) => height * (cards.length - (index + 1)),
-        duration: (index) => 0.6 / (index + 1),
-        transformOrigin: 'top center',
-        ease: 'none',
-        stagger: (index) => 0.3 * index,
-        scrollTrigger: {
-          trigger: '.homeCard',
-          start: 'top+=130px bottom',
-          end: 'bottom top',
-          endTrigger: '.cardList',
-          scrub: true,
-          pin: '.cardList',
-        },
-      });
+      loaded &&
+        gsap.from('.homeCard', {
+          y: (index) => height * (cards.length - (index + 1)),
+          duration: (index) => 0.6 / (index + 1),
+          transformOrigin: 'top center',
+          ease: 'none',
+          stagger: (index) => 0.3 * index,
+          scrollTrigger: {
+            trigger: '.homeCard',
+            start: 'top+=130px bottom',
+            end: 'bottom top',
+            endTrigger: '.cardList',
+            scrub: true,
+            pin: '.cardList',
+          },
+        });
     });
 
     return () => ctx.revert();
@@ -123,7 +124,12 @@ export default function HomePage({}: HomePageProps) {
   }
 
   return (
-    <div className={styles.page}>
+    <div
+      className={styles.page}
+      onLoad={() => {
+        setLoaded(true);
+      }}
+    >
       <main className={styles.main}>
         <Hero data={data} />
         <LargeImage
