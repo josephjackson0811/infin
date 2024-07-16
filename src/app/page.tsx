@@ -24,8 +24,10 @@ import { useGSAP } from '@gsap/react';
 // gsap.registerPlugin(ScrollTrigger);
 
 if (typeof window !== 'undefined') {
+  console.log('window');
   gsap.registerPlugin(ScrollTrigger, useGSAP);
 }
+
 interface HomePageProps {}
 
 interface IHomeData {
@@ -75,8 +77,6 @@ export default function HomePage({}: HomePageProps) {
       console.log(err);
     }
   };
-
-  console.log('scrollTrigger', ScrollTrigger);
 
   useLayoutEffect(() => {
     setElementHeight(
