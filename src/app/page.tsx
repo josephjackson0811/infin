@@ -133,7 +133,6 @@ export default function HomePage({}: HomePageProps) {
         setLoaded(true);
       }}
     >
-      {/* <div className="cardList"> */}
       <main className={styles.main}>
         <Hero data={data} />
         <LargeImage
@@ -147,7 +146,6 @@ export default function HomePage({}: HomePageProps) {
 
         <div
           className={styles.cardList + ' cardList'}
-          // className={styles.cardList}
           ref={cardContainer}
           style={{
             position: 'relative',
@@ -169,12 +167,9 @@ export default function HomePage({}: HomePageProps) {
             style={{ position: 'relative', zIndex: '4' }}
           />
         </div>
-        <BottomComponent
-          className="homeCard"
-          style={{ position: 'relative', zIndex: '5' }}
-        />
       </main>
-      {/* </div> */}
+
+      <BottomComponent />
       <div id="space" style={{ height: 0, zIndex: 0 }}></div>
     </div>
   );
