@@ -79,11 +79,6 @@ export default function HomePage({}: HomePageProps) {
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      ScrollTrigger.refresh();
-
-      // Your GSAP and ScrollTrigger code here
-    }
     setElementHeight(
       document.getElementById('business')?.parentElement
         ?.offsetHeight as number,
@@ -100,29 +95,52 @@ export default function HomePage({}: HomePageProps) {
   }, [elementHeight]);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const height =
       (document.getElementById('business')?.clientHeight as number) - 30 || 900;
     const cards = gsap.utils.toArray('.homeCard');
 
-    let ctx = gsap.context(() => {
-      gsap.from('.homeCard', {
-        y: (index) => height * (cards.length - (index + 1)),
-        duration: (index) => 0.6 / (index + 1),
-        transformOrigin: 'top center',
-        ease: 'none',
-        stagger: (index) => 0.3 * index,
-        scrollTrigger: {
-          trigger: '.homeCard',
-          start: 'top+=130px bottom',
-          end: 'bottom top',
-          endTrigger: '.cardList',
-          scrub: true,
-          pin: '.cardList',
-        },
-      });
+    // let ctx = gsap.context(() => {
+    //   gsap.from('.homeCard', {
+    //     y: (index) => height * (cards.length - (index + 1)),
+    //     duration: (index) => 0.6 / (index + 1),
+    //     transformOrigin: 'top center',
+    //     ease: 'none',
+    //     stagger: (index) => 0.3 * index,
+    //     scrollTrigger: {
+    //       trigger: '.homeCard',
+    //       start: 'top+=130px bottom',
+    //       end: 'bottom top',
+    //       endTrigger: '.cardList',
+    //       scrub: true,
+    //       pin: '.cardList',
+    //     },
+    //   });
+    // });
+
+    // return () => ctx.revert();
+    gsap.from('.homeCard', {
+      y: (index) => height * (cards.length - (index + 1)),
+      duration: (index) => 0.6 / (index + 1),
+      transformOrigin: 'top center',
+      ease: 'none',
+      stagger: (index) => 0.3 * index,
+      scrollTrigger: {
+        trigger: '.homeCard',
+        start: 'top+=130px bottom',
+        end: 'bottom top',
+        endTrigger: '.cardList',
+        scrub: true,
+        pin: '.cardList',
+      },
     });
 
-    return () => ctx.revert();
+    return () => {
+      // Clean up GSAP animations if necessary
+      ScrollTrigger.getAll().forEach((trigger) => {
+        trigger.kill(true);
+      });
+    };
   });
 
   useEffect(() => {
