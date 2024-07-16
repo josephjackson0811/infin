@@ -143,10 +143,7 @@ export default function Footer({}: FooterProps) {
           <li className={styles.listItem}>
             <h4 className={styles.title}>Social Media</h4>
             {social.map((item, index) => (
-              <a
-                href={index === 0 ? `tel:${item.url}` : `mailto:${item.url}`}
-                key={index}
-              >
+              <a href={item.url} key={index}>
                 {item.title}
               </a>
             ))}
