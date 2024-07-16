@@ -84,7 +84,10 @@ export default function HowWorks({ data }: HowWorksProps) {
       });
     }, document.body);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   });
 
   if (!data) {

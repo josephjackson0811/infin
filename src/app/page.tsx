@@ -113,7 +113,10 @@ export default function HomePage({}: HomePageProps) {
         });
     });
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   });
 
   useEffect(() => {

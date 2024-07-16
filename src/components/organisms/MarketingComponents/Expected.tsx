@@ -92,7 +92,10 @@ export default function Expected({ data }: ExpectedProps) {
       });
     }, document.body);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   });
 
   useEffect(() => {
