@@ -23,10 +23,10 @@ import useCheckIsMobile from '@/hooks/useCheckIsMobile';
 import { useGSAP } from '@gsap/react';
 // gsap.registerPlugin(ScrollTrigger);
 
-if (typeof window !== 'undefined') {
-  console.log('window');
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
+// if (typeof window !== 'undefined') {
+console.log('window');
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+// }
 
 interface HomePageProps {}
 
@@ -78,7 +78,12 @@ export default function HomePage({}: HomePageProps) {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      ScrollTrigger.refresh();
+
+      // Your GSAP and ScrollTrigger code here
+    }
     setElementHeight(
       document.getElementById('business')?.parentElement
         ?.offsetHeight as number,
